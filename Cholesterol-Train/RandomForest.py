@@ -160,6 +160,7 @@ if __name__ == "__main__":
     dataset = pd.read_excel('DiabetesData.xlsx')
 
     # Separate Features (X) and Target (y)
+    # Remove Limit After Test
     X = dataset.drop(columns=['Cholesterol Level', 'Diabetes'])[:100]
     y = dataset['Cholesterol Level'][:100]
     
