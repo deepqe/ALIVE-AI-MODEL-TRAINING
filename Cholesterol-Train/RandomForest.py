@@ -1,5 +1,5 @@
-import pickle
 import logging
+import pickle
 import numpy as np
 import pandas as pd
 from typing import Union
@@ -125,48 +125,48 @@ class RandomForestPredictor:
 if __name__ == "__main__":
     
     # Load the Dataset
-    dataset = pd.read_excel('DiabetesData.xlsx')
+    # dataset = pd.read_excel('DiabetesData.xlsx')
 
     # Separate Features (X) and Target (y)
-    X = dataset.drop(columns=['Cholesterol Level', 'Diabetes'])
-    y = dataset['Cholesterol Level']
+    # X = dataset.drop(columns=['Cholesterol Level', 'Diabetes'])
+    # y = dataset['Cholesterol Level']
     
     # Initialize and Fit the Random Forest Predictor
-    predictor = RandomForestPredictor()
-    predictor.fit(X, y)
+    # predictor = RandomForestPredictor()
+    # predictor.fit(X, y)
     
     # Save the model
-    with open('model.pkl', 'wb') as file:
-        pickle.dump(predictor, file)
+    # with open('model.pkl', 'wb') as file:
+    #     pickle.dump(predictor, file)
         
     # Load the model
-    # with open('model.pkl', 'rb') as file:
-    #     predictor = pickle.load(file)
+    with open('model.pkl', 'rb') as file:
+        predictor = pickle.load(file)
     
     # Evaluate the Model on the Test Set
     # predictor.Evaluate(X_test, y_test)
 
     # Predict on New Data
-    # X_new = pd.DataFrame([{
-    #     "Age": 30,
-    #     "Gender": "Male",
-    #     "Weight": 40,
-    #     "Height": 1.853495087,
-    #     "Family History": "No",
-    #     "Physical Activity Level": "High",
-    #     "Dietary Habits": "Paleo",
-    #     "Ethnicity/Race": "Caucasian",
-    #     "Medication Use": "No",
-    #     "Sleep Quality": "Good",
-    #     "Stress Levels": "Low",
-    #     "Waist Circumference": 84.0,
-    #     "Hip Circumference": 141.0,
-    #     "Smoking Status": "Non-Smoker",
-    #     "Fasting Blood Glucose": 100.0,
-    #     "HbA1c": 4.924363225,
-    #     "Waist-to-Hip Ratio": 0.920454545,
-    #     "BMI": 23.97959184
-    # }])
-    # 
-    # p = predictor.predict(X_new)
-    # print(p)
+    X_new = pd.DataFrame([{
+        "Age": 39,
+        "Gender": "Female",
+        "Weight": 99,
+        "Height": 1.4,
+        "Family History": "Yes",
+        "Physical Activity Level": "Moderate",
+        "Dietary Habits": "Paleo",
+        "Ethnicity/Race": "Hispanic/Latino",
+        "Medication Use": "No",
+        "Sleep Quality": "Fair",
+        "Stress Levels": "Low",
+        "Waist Circumference": 82.0,
+        "Hip Circumference": 82.0,
+        "Smoking Status": "Smoker",
+        "Fasting Blood Glucose": 77.0,
+        "HbA1c": 6.08268928,
+        "Waist-to-Hip Ratio": 1.034883721,
+        "BMI": 28.57142857
+    }])
+    
+    p = predictor.predict(X_new)
+    print(p)
